@@ -1,0 +1,107 @@
+{
+    "bridge": {
+        "name": "Homebridge AE57",
+        "username": "0E:2A:58:7E:AE:57",
+        "port": 53613,
+        "pin": "031-45-154"
+    },
+    "accessories": [
+        {
+            "type": "outlet",
+            "name": "fluter",
+            "topics": {
+                "getOnline": "wohnung/fluter/tele/LWT",
+                "getOn": "wohnung/fluter/stat/POWER",
+                "setOn": "wohnung/fluter/cmnd/POWER"
+            },
+            "startPub": [
+                {
+                    "topic": "wohnung/fluter/cmnd/TelePeriod",
+                    "message": "60"
+                },
+                {
+                    "topic": "wohnung/fluter/cmnd/POWER",
+                    "message": "="
+                }
+            ],
+            "onValue": "ON",
+            "offValue": "OFF",
+            "accessory": "mqttthing"
+        },
+        {
+            "type": "outlet",
+            "name": "giessen",
+            "topics": {
+                "getOnline": "terasse/giessen/tele/LWT",
+                "getActive": "terasse/giessen/stat/POWER",
+                "setActive": "terasse/giessen/cmnd/POWER",
+                "getOn": "terasse/giessen/stat/POWER",
+                "setOn": "terasse/giessen/cmnd/Power1"
+            },
+            "startPub": [
+                {
+                    "topic": "terasse/bewaesserung/cmnd/TelePeriod",
+                    "message": "60"
+                },
+                {
+                    "topic": "terasse/giessen/stat/POWER",
+                    "message": "="
+                }
+            ],
+            "onValue": "ON",
+            "offValue": "OFF",
+            "accessory": "mqttthing"
+        },
+        {
+            "type": "outlet",
+            "name": "schlafzimmer",
+            "topics": {
+                "getOnline": "wohnung/sz/tele/LWT",
+                "getOn": "wohnung/sz/stat/POWER",
+                "setOn": "wohnung/sz/cmnd/Power1"
+            },
+            "startPub": [
+                {
+                    "topic": "wohnung/sz/cmnd/TelePeriod",
+                    "message": "60"
+                },
+                {
+                    "topic": "wohnung/sz/cmnd/POWER",
+                    "message": "="
+                }
+            ],
+            "onValue": "ON",
+            "offValue": "OFF",
+            "accessory": "mqttthing"
+        },
+        {
+            "type": "outlet",
+            "name": "wohnzimmer",
+            "topics": {
+                "getOnline": " wohnung/wz/tele/LWT",
+                "getOn": " wohnung/wz/stat/POWER",
+                "setOn": " wohnung/wz/cmnd/Power1"
+            },
+            "startPub": [
+                {
+                    "topic": " wohnung/wz/cmnd/TelePeriod",
+                    "message": "60"
+                },
+                {
+                    "topic": " wohnung/wz/cmnd/POWER",
+                    "message": "="
+                }
+            ],
+            "onValue": "ON",
+            "offValue": "OFF",
+            "accessory": "mqttthing"
+        }
+    ],
+    "platforms": [
+        {
+            "name": "Config",
+            "port": 8080,
+            "platform": "config"
+        }
+    ]
+}
